@@ -31,7 +31,7 @@ printf('Tiempo de ejecución del algoritmo secuencial: %fs\n',t1);
 for i = 1:length(procs)
     printf('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n')
     printf('Tiempo de ejecución del algoritmo paralelo para %d procesadores: %fs\n',procs(i),t2(i));
-    printf('Aceleración para %d procesadores: %fs\n',procs(i),t1/t2(i));
+    printf('Aceleración para %d procesadores: %f%% \n',procs(i),((t1/t2(i)) * 100));
 endfor
 
 
