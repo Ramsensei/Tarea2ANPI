@@ -42,9 +42,8 @@ end
 
 Fs = matlabFunction(Fs);
 J = matlabFunction(J);
-
 for k = 1:iterMax - 1
-    xi(k+1,:) = xi(k,:)' - inv(J(num2cell(xi(k,:)){:}))*Fs(num2cell(xi(k,:)){:})';
+    xi(k+1,:) = xi(k,:)' - inv(J(num2cell(xi(k,:)){1:nargin(J)}))*Fs(num2cell(xi(k,:)){:})';
     ea(k+1) = norm(Fs(num2cell(xi(k,:)){:}));
 
     if isnan(ea(k+1))
@@ -66,4 +65,7 @@ Datos = num2cell([transpose(1:size(xi, 1)),xi,transpose(ea)]);
 xn = xi(end,:)';
 err = ea(end);
 M = [Encabezado ; Datos];
+
+% plot k vs ea
+stem(1:k, ea(1:k));
 endfunction
